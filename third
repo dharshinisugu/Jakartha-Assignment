@@ -1,0 +1,44 @@
+class Student {
+    String name, regNo, dept, year, semester;
+    int mark1, mark2, mark3, mark4, mark5, mark6;
+
+    public Student(String name, String regNo, String dept, String year, String semester, 
+                   int mark1, int mark2, int mark3, int mark4, int mark5, int mark6) {
+        this.name = name;
+        this.regNo = regNo;
+        this.dept = dept;
+        this.year = year;
+        this.semester = semester;
+        this.mark1 = mark1;
+        this.mark2 = mark2;
+        this.mark3 = mark3;
+        this.mark4 = mark4;
+        this.mark5 = mark5;
+        this.mark6 = mark6;
+    }
+
+    public int getTotal() {
+        return mark1 + mark2 + mark3 + mark4 + mark5 + mark6;
+    }
+
+    public double getAverage() {
+        return getTotal() / 6.0;
+    }
+
+    public void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Reg. No: " + regNo);
+        System.out.println("Department: " + dept);
+        System.out.println("Year: " + year);
+        System.out.println("Semester: " + semester);
+        System.out.println("Total Marks: " + getTotal());
+        System.out.println("Average Marks: " + getAverage());
+        System.out.println("Percentage: " + (getTotal() / 6.0) + "%");
+    }
+
+    public static void main(String[] args) {
+        Student student = new Student("John Doe", "12345", "CSE", "3rd Year", "5th Semester", 
+                                      85, 90, 78, 92, 88, 95);
+        student.display();
+    }
+}

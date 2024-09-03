@@ -1,0 +1,55 @@
+class Employee {
+    int empId;
+    String empName;
+    String empAddress;
+    String empDesignation;
+    String empDepartment;
+    String empPhoneNo;
+    double empBasicPay;
+    double empHRA;
+    double empDA;
+    double empTA;
+
+    public Employee(int empId, String empName, String empAddress, String empDesignation, String empDepartment,
+                    String empPhoneNo, double empBasicPay, double empHRA, double empDA, double empTA) {
+        this.empId = empId;
+        this.empName = empName;
+        this.empAddress = empAddress;
+        this.empDesignation = empDesignation;
+        this.empDepartment = empDepartment;
+        this.empPhoneNo = empPhoneNo;
+        this.empBasicPay = empBasicPay;
+        this.empHRA = empHRA;
+        this.empDA = empDA;
+        this.empTA = empTA;
+    }
+
+    public double getTotalSalary() {
+        return empBasicPay + empHRA + empDA + empTA;
+    }
+
+    public static Employee getHighestPaidEmployee(Employee[] employees) {
+        Employee highestPaid = employees[0];
+        for (Employee emp : employees) {
+            if (emp.getTotalSalary() > highestPaid.getTotalSalary()) {
+                highestPaid = emp;
+            }
+        }
+        return highestPaid;
+    }
+
+    public static void main(String[] args) {
+        Employee[] employees = {
+            new Employee(1, "John Doe", "Address1", "Engineer", "CSE", "1234567890", 30000, 3000, 2000, 1000),
+            new Employee(2, "Jane Smith", "Address2", "Manager", "IT", "0987654321", 40000, 4000, 2500, 1500),
+            new Employee(3, "Alice Brown", "Address3", "Analyst", "HR", "1122334455", 35000, 3500, 2200, 1300)
+        };
+
+        for (Employee emp : employees) {
+            System.out.println("Total Salary of " + emp.empName + ": " + emp.getTotalSalary());
+        }
+
+        Employee highestPaid = getHighestPaidEmployee(employees);
+        System.out.println("Highest Paid Employee: " + highestPaid.empName + " with salary " + highestPaid.getTotalSalary());
+    }
+}

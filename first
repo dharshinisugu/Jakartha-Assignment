@@ -1,0 +1,23 @@
+import java.util.HashSet;
+
+public class DuplicateElements {
+    public static void main(String[] args) {
+        int[] arr = {4, 5, 9, 4, 2, 9, 7, 2};  // Example input array
+
+        Integer firstDuplicate = null;
+        Integer lastDuplicate = null;
+        HashSet<Integer> seen = new HashSet<>();
+
+        for (int i = 0; i < arr.length; i++) {
+            if (!seen.add(arr[i])) {
+                if (firstDuplicate == null) {
+                    firstDuplicate = arr[i];
+                }
+                lastDuplicate = arr[i];
+            }
+        }
+
+        System.out.println("First duplicate element: " + firstDuplicate);
+        System.out.println("Last duplicate element: " + lastDuplicate);
+    }
+}
